@@ -23,10 +23,8 @@
 <body>
     <header>
         <div class="header-container">
-            <a href="/" class="yelp"><img src="https://s3.amazonaws.com/yelpcloneassets/Logos/yelp.logo.png" class="logo" /></a>
+            <a href="/" class="yelp"><i class="fas fa-angle-left fa-2x"></i></a>
             <form class="searchbar-business">
-                <label class="find">Find</label>
-                <input id="searchInput" type="text" onfocus="this.value=''" placeholder="restaurants, burgers, pizza" />
                 <label class="location">Near</label>
                 <input id="locationInput" type="text" onfocus="this.value=''" placeholder="Current Location" />
                 <button type="submit" class="submit" id="submit"><i class="fas fa-search fa-2x"></i></button>
@@ -34,7 +32,7 @@
         </form>
     </header>
     <nav>
-        <ul class="shortcuts">
+        <!-- <ul class="shortcuts">
             <div class="utensils blue">
                 <i class="fas fa-utensils"></i>
                 <li>
@@ -47,39 +45,19 @@
                     <p>Businesses</p>
                 </li>
             </div>
-        </ul>
+        </ul> -->
     </nav>
     <div class="background">
-        <section class="search-title">
-            <div id="bestNear">
-            </div>
-            <div>
-            </div>
-        </section>
-        <section class="filter">
-            <div class="dollar">
-                <button id="oneDollar" class="first tagFilter" data-tool-tip="Inexpensive">$</button>
-                <button id="twoDollar" class="tagFilter" data-tool-tip="Moderate">$$</button>
-                <button id="threeDollar" class="tagFilter" data-tool-tip="Pricey">$$$</button>
-                <button id="fourDollar" class="last tagFilter" data-tool-tip="Ultra High-End">$$$$</button>
-            </div>
-            <button id="openStatus" class="open tagFilter" data-tool-tip="Find businesses that are open now">
-                <p><i class="far fa-clock"></i>Open Now</p>
-            </button>
-        </section>
+        <aside class="result-map">
+            <div id="map"></div>
+        </aside>
     </div>
     <div class="results">
         <section class="card mb-14">
             <div class="card-body" id="holder">
             </div>
         </section>
-        <aside class="result-map">
-            <div class="map-header">
-                <a href="#"><i class="fas fa-chevron-left rotate"></i><span>Mo' Map</span></a>
-                <button>Redo Search in Map</button>
-            </div>
-            <div id="map"></div>
-        </aside>
+
     </div>
 
     <footer>

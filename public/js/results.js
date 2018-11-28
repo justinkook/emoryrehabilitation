@@ -115,7 +115,7 @@ if (locationIndexInput !== null) {
           zoom: 11,
           zoomControl: true,
           zoomControlOptions: {
-            position: google.maps.ControlPosition.LEFT_TOP,
+            position: google.maps.ControlPosition.RIGHT_BOTTOM,
           },
           center: {
             lat: list[0].coordinates.latitude,
@@ -124,7 +124,7 @@ if (locationIndexInput !== null) {
           tilt: 45,
           disableDefaultUI: true
         })
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 30; i++) {
           const marker = new google.maps.Marker({
             position: {
               lat: list[i].coordinates.latitude,
@@ -133,7 +133,7 @@ if (locationIndexInput !== null) {
             map: map,
             title: list[i].name,
             label: {
-              text: 'Yelp',
+              text: 'Emory',
               fontSize: '10px',
             }
 
