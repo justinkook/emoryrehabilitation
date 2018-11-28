@@ -114,6 +114,7 @@ input {
     background-color: #d90007;
     border-radius: 0px 5px 5px 0px;
     cursor: pointer;
+    display: none;
 }
 
 .search {
@@ -156,7 +157,7 @@ footer {
 /* Mobile Responsiveness */
 @media only screen and (max-width: 600px) {
     body {
-        width: 500px;
+        width: 375px;
     }
     
     .signup {
@@ -165,6 +166,7 @@ footer {
     }
     
     main {
+        margin: 0px;
         margin-top: 90px;
         display: grid;
         grid-template-rows: 200px 200px 50px;
@@ -174,8 +176,9 @@ footer {
     form {
         display: grid;
         grid-template-rows: 70px 70px 70px;
-        grid-template-columns: 60px 420px;
+        grid-template-columns: 60px 300px;
         justify-content: center;
+        align-items: center;
     }
 
     label {
@@ -189,25 +192,25 @@ footer {
         border-radius: 0px 5px 5px 0px;
     }
 
-    form button {
+    /* form button {
         height: 60px;
-    }
+    } */
 
-    .submit {
+    /* .submit {
         border-radius: 5px;
         cursor: pointer;
         position: relative;
         left: 157px;
         width: 165px;
-    }
+    } */
 
-    .search {
+    /* .search {
         display: inline-block;
         font-size: 16px;
         font-weight: 700;
         color: white;
         margin-right: 10px;
-    }
+    } */
 
     .fa-2x {
         font-size: 1.75em;
