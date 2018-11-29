@@ -1,7 +1,8 @@
 /* Main Page Styling */
 body {
     margin: 0;
-    background: rgb(6, 67, 134);
+    color: rgb(6, 67, 134);
+    background: white;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -73,6 +74,8 @@ i {
 }
 
 .yelp {
+    width: 225px;
+    height: 105px;
     display: flex;
 }
 
@@ -92,9 +95,10 @@ label {
     align-items: center;
     justify-content: center;
     background-color: white;
-    color: gray;
+    color: rgb(6, 67, 134);
     font-size: 16px;
     font-weight: 700;
+    border: 1px solid rgb(6, 67, 134);
 }
 
 .find {
@@ -102,9 +106,9 @@ label {
 }
 
 input {
-    border: none;
+    border: 1px solid rgb(6, 67, 134);
     font-size: 16px;
-    color: gray;
+    color: rgb(6, 67, 134);
 }
 
 .submit {
@@ -124,11 +128,11 @@ input {
 }
 
 .shortcuts {
-    display: grid;
+    display: block;
 }
 
 .underline {
-    font-weight: 700;
+    font-weight: 200;
 }
 
 .subhead {
@@ -182,14 +186,70 @@ footer {
 .ui.purple.segment:not(.inverted) {
     border-top: 2px solid #bd28db!important;
 }
+
+/* dropdown css */
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+    border-bottom: .5px solid rgba(6, 67, 134, .2);
+    text-align: center;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: rgb(6, 67, 134);
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.fa-caret-down {
+    margin-left: 20px;
+    float: right;
+    color: rgb(6, 67, 134);
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    text-decoration: underline;
+}
+
+.dropdown-content {
+    display: none;
+    text-transform: uppercase;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content li {
+    float: none;
+    color: rgb(6, 67, 134);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content ul:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 /* Mobile Responsiveness */
 @media only screen and (max-width: 600px) {
     
-    body {
-        width: 600px;
-    }
     .logo {
-        margin-left: 50px;
+        margin-left: 70px;
     }
 
     .signup {
@@ -234,13 +294,10 @@ footer {
 
 @media only screen and (min-width: 600px) {
     .yelp {
+        width: 100%;
         justify-content: center;
     }
     form {
-        justify-content: center;
-    }
-    .shortcuts {
-        display: flex;
         justify-content: center;
     }
 }
