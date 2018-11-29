@@ -2,7 +2,7 @@
 body {
     margin: 0;
     color: rgb(6, 67, 134);
-    background: white;
+    background: rgba(0, 0, 0, .01);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -194,6 +194,7 @@ footer {
     overflow: hidden;
     border-bottom: .5px solid rgba(6, 67, 134, .2);
     text-align: center;
+    margin-top: 5px;
 }
 
 .dropdown .dropbtn {
@@ -208,7 +209,7 @@ footer {
     text-transform: uppercase;
 }
 
-.fa-caret-down {
+.fa-caret-down, .fa-caret-right {
     margin-left: 20px;
     float: right;
     color: rgb(6, 67, 134);

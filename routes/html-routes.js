@@ -23,6 +23,10 @@ module.exports = function(app) {
     app.get('/edit', function(req, res) {
         res.sendFile(path.join(__dirname, '../public/edit-review.html'));
     });
+    //Sends insurance page
+    app.get('/insurance', function(req, res) {
+        res.sendFile(path.join(__dirname, '../public/insurance.html'));
+    });
     // If no matching route is found default to index.html
     app.get('*', function(req, res) {
         res.sendFile(path.join(__dirname, '../public/index.html'));
