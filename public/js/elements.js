@@ -22,8 +22,9 @@ const buildIndivBusinessBlock = function (businessData) {
     businessElement += `<div class='media-block'>`;
     businessElement += `<div class='media-story'>`;
     businessElement += `<div class='biz-attributes'>`;
+    businessElement += `<a id=${businessData.id} class='biz-name' href='business?alias=${businessData.alias}'>`;
     businessElement += `<div class='main-attributes'>`;
-    businessElement += `<div class='search-result-title'><span class='indexed-biz-name'>${count}. <a id=${businessData.id} class='biz-name'  href='business?alias=${businessData.alias}'><span id='${businessData.alias}'>${businessData.name}</span></a></span></div>`;
+    businessElement += `<div class='search-result-title'><span class='indexed-biz-name'>${count}. <span id='${businessData.alias}'>${businessData.name}</span></span></div>`;
     businessElement += `</div>`;
     businessElement += `<div class='secondary-attributes'>`;
     businessElement += `<span class='biz-phone'>${formatPhoneNumbers(businessData.phone)}</span>`;
@@ -31,9 +32,9 @@ const buildIndivBusinessBlock = function (businessData) {
     businessElement += `<span class='neighborhood-str-list'>${businessData.location.city}, ${businessData.location.state} ${businessData.location.zip_code}</span>`;
     businessElement += `</div>`;
     businessElement += `</div>`;
-    businessElement += `<div class='biz-extra-info'>`;
-    businessElement += `<div class='price-category'><span class='category-list'>${anchorCategories(businessData.categories)}</span></div>`;
-    businessElement += `</div>`;
+    // businessElement += `<div class='biz-extra-info'>`;
+    // businessElement += `<div class='price-category'><span class='category-list'>${anchorCategories(businessData.categories)}</span></div>`;
+    businessElement += `</div></a>`;
     businessElement += `</div>`;
     businessElement += `</div>`;
     return businessElement;

@@ -1,8 +1,7 @@
 /* Main Page Styling */
 body {
-    height: 100vh;
-    width: 1020px;
-    margin: auto;
+    margin: 0;
+    background: rgb(6, 67, 134);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -74,13 +73,12 @@ i {
 }
 
 .yelp {
-    display: grid;
-    margin: auto;
+    display: flex;
 }
 
 .logo {
-    width: 165px;
-    height: 85px;
+    width: 225px;
+    height: 105px;
 }
 
 form {
@@ -126,25 +124,19 @@ input {
 }
 
 .shortcuts {
-    margin-top: 10px;
     display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 20px 85px 25px 75px;
-    align-items: center;
-    justify-content: center;
 }
 
 .underline {
     font-weight: 700;
-    color: white;
-}
-
-.underline:hover {
-    text-decoration: underline;
 }
 
 .subhead {
+    background: white;
+    padding: 10px;
     cursor: pointer;
+    width: 100%;
+    height: 100%;
 }
 
 footer {
@@ -154,12 +146,52 @@ footer {
     color: white;
 }
 
+/* This part is imported dElect css */
+::selection {
+    background-color: #cce2ff;
+    color: rgba(0,0,0,.87);
+}
+.ui[class*="top attached"].segment {
+    bottom: 0;
+    margin-bottom: 0;
+    top: 0;
+    border-radius: .28571429rem .28571429rem 0 0;
+}
+/*colors for the top table borders */
+.ui.blue.segment:not(.inverted) {
+    border-top: 2px solid #2185d0!important;
+}
+.ui.green.segment:not(.inverted) {
+    border-top: 2px solid #21ba45!important;
+}
+.ui.red.segment:not(.inverted) {
+    border-top: 2px solid #db2828!important;
+}
+.ui.orange.segment:not(.inverted) {
+    border-top: 2px solid #db9328!important;
+}
+.ui.black.segment:not(.inverted) {
+    border-top: 2px solid #000000!important;
+}
+.ui.pink.segment:not(.inverted) {
+    border-top: 2px solid #eb2ddb!important;
+}
+.ui.teal.segment:not(.inverted) {
+    border-top: 2px solid #28dbbd!important;
+}
+.ui.purple.segment:not(.inverted) {
+    border-top: 2px solid #bd28db!important;
+}
 /* Mobile Responsiveness */
 @media only screen and (max-width: 600px) {
-    body {
-        width: 375px;
-    }
     
+    body {
+        width: 600px;
+    }
+    .logo {
+        margin-left: 50px;
+    }
+
     .signup {
         position: relative;
         left: 156px;
@@ -169,16 +201,15 @@ footer {
         margin: 0px;
         margin-top: 90px;
         display: grid;
-        grid-template-rows: 200px 200px 50px;
+        grid-template-rows: 200px 150px 50px;
         grid-template-columns: 1fr;
     }
     
     form {
+        margin-left: 5px;
         display: grid;
-        grid-template-rows: 70px 70px 70px;
+        grid-template-rows: 70px 70px;
         grid-template-columns: 60px 300px;
-        justify-content: center;
-        align-items: center;
     }
 
     label {
@@ -192,31 +223,24 @@ footer {
         border-radius: 0px 5px 5px 0px;
     }
 
-    /* form button {
-        height: 60px;
-    } */
-
-    /* .submit {
-        border-radius: 5px;
-        cursor: pointer;
-        position: relative;
-        left: 157px;
-        width: 165px;
-    } */
-
-    /* .search {
-        display: inline-block;
-        font-size: 16px;
-        font-weight: 700;
-        color: white;
-        margin-right: 10px;
-    } */
-
     .fa-2x {
         font-size: 1.75em;
     }
     
     footer {
         top: 175px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .yelp {
+        justify-content: center;
+    }
+    form {
+        justify-content: center;
+    }
+    .shortcuts {
+        display: flex;
+        justify-content: center;
     }
 }
