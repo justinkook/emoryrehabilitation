@@ -1,6 +1,6 @@
 {
-  "name": "Emory Rehabilitation Center",
-  "yelpclonejk": "https://github.com/justinkook/yelpclonejk/tarball/master",
+  "name": "yelpclone",
+  "version": "1.0.0",
   "description": "Class Project",
   "main": "server.js",
   "scripts": {
