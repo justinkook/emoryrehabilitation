@@ -3,6 +3,7 @@ let insuranceList;
 $.get('/api/insurance')
   .then(function(data) {
     insuranceList = data;
+    state.runCommand.render(insuranceList);
   });
 
 const state = {
@@ -26,6 +27,7 @@ const state = {
     },
   },
 };
+
 
 //on submit button with id click, runs callback function
 $('#contains').on('click', state.runCommand.containfy);
