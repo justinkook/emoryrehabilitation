@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-var RestaurantSchema = new Schema(
+var LocationSchema = new Schema(
     {
 
         id: {
@@ -75,6 +75,6 @@ var RestaurantSchema = new Schema(
     }
 );
 
-var Restaurant = mongoose.model("Restaurant", RestaurantSchema);
+var Location = mongoose.model("Location", LocationSchema);
 
-module.exports = Restaurant;
+module.exports = Location;

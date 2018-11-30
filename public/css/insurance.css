@@ -137,9 +137,6 @@ tr {
 
 }
 
-tbody:hover {
-    transform: scale(1.01);
-}
 form {
     text-align: left;
 }

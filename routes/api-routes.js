@@ -6,21 +6,17 @@ const RestfulAPI = require('./RestClass');
 
 module.exports = function (app) {
 
-    const background = new RestfulAPI('background', app, db.Background);
-    background.find();
-    background.create();
+    const location = new RestfulAPI('location', app, db.Location);
+    location.find();
 
-    const restaurant = new RestfulAPI('restaurant', app, db.Restaurant);
-    restaurant.find();
-
-    const review = new RestfulAPI('review', app, db.Review);
-    review.find();
+    const insurance = new RestfulAPI('insurance', app, db.Insurance);
+    insurance.find();
 
     app.post('/api/review', function (req, res) {
 
         db.Review.create(req.body)
             .then(function (dbReview) {
-                db.Restaurant.findOneAndUpdate({
+                db.Location.findOneAndUpdate({
                         alias: req.body.url
                     }, {
                         $set: {
@@ -42,7 +38,7 @@ module.exports = function (app) {
     })
 
     app.put('/api/update/:id', function (req, res) {
-        db.Restaurant.findOneAndUpdate({
+        db.Location.findOneAndUpdate({
                 alias: req.params.id
             }, {
                 $set: {
@@ -57,12 +53,12 @@ module.exports = function (app) {
             });
     });
     
-    app.get('/api/restaurant/:alias', function (req, res) {
-        db.Restaurant.find({
+    app.get('/api/location/:alias', function (req, res) {
+        db.Location.find({
                 alias: req.params.alias
             })
-            .then(function (dbRestaurant) {
-                res.json(dbRestaurant);
+            .then(function (dbLocation) {
+                res.json(dbLocation);
             })
             .catch(function (err) {
                 res.json(err);
@@ -74,7 +70,7 @@ module.exports = function (app) {
         let regex = {
             $regex: new RegExp(alias, 'i')
         };
-        db.Restaurant.find({
+        db.Location.find({
                 'alias': alias
             })
             .or([{
@@ -89,11 +85,11 @@ module.exports = function (app) {
     });
 
     app.get('/api/business/:alias', function (req, res) {
-        db.Restaurant.find({
+        db.Location.find({
                 alias: req.params.alias
             })
-            .then(function (dbRestaurant) {
-                res.json(dbRestaurant);
+            .then(function (dbLocation) {
+                res.json(dbLocation);
             })
             .catch(function (err) {
                 res.json(err);
