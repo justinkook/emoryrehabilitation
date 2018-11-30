@@ -26,9 +26,13 @@ main {
 }
 
 h6 {
-    display: inline;
-    font-size: 25px;
+    font-size: 20px;
     color: white;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 .content {
@@ -38,12 +42,13 @@ h6 {
     padding-top: 25px;
 }
 #listArea {
-    margin-right: 20px;
     padding: 20px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
     color: white;
+    text-transform: uppercase;
+    font-weight: 100;
 }
 
 @keyframes fadein {
@@ -90,7 +95,7 @@ tbody {
     display: flex;
     justify-content: left;
     align-items: center;
-    background-color: rgba(255,255,255,0.1);
+    background-color: transparent;
     margin: 5px 0;
     transition: 0.5s;
 }
@@ -101,7 +106,7 @@ tbody:nth-child(-n+18) {
         -ms-animation: fadein .6s; 
          -o-animation: fadein .6s; 
             animation: fadein .6s;
-    background-color: rgba(255,255,255,0.2);
+    background-color: transparent;
 }
 tbody:nth-child(-n+12) {
     transition-timing-function:cubic-bezier(.25,.25,.75,.75);
@@ -110,7 +115,7 @@ tbody:nth-child(-n+12) {
         -ms-animation: fadein 1s; /* Internet Explorer */
          -o-animation: fadein 1s; /* Opera < 12.1 */
             animation: fadein 1s;
-    background-color: rgba(255,255,255,0.4);
+    background-color: transparent;
 }
 tbody:nth-child(-n+6) {
     transition-timing-function:cubic-bezier(.25,.25,.75,.75);
@@ -119,15 +124,21 @@ tbody:nth-child(-n+6) {
         -ms-animation: fadein 1.4s; 
          -o-animation: fadein 1.4s; 
             animation: fadein 1.4s;
-    background-color: rgba(255,255,255,0.6);
+    background-color: transparent;
 }
 
 th, td {
     padding: 15px;
 }
+
+tr {
+    width: 100%;
+    border-bottom: 1px solid white;
+
+}
+
 tbody:hover {
-    background-color: rgba(47,23,0,.5);
-    transform: scale(1.06)
+    transform: scale(1.01);
 }
 form {
     text-align: left;
@@ -137,7 +148,7 @@ input[type=text]{
     display: flex;
     margin-bottom: 10px;
     border-radius: 5px;
-    min-width: 375px;
+    min-width: 280px;
     height: 45px;
     cursor: text;
 }
@@ -149,10 +160,9 @@ input[type=text]{
 
 .fa-search {
     color: white;
-    margin-left: 20px;
     padding-top: 10px;
     cursor: pointer;
-    display: inline;
+    float: right;
 }
 
 .fa-search:hover {
@@ -167,8 +177,12 @@ h4 {
     text-transform: uppercase;
 }
 
+.hidden {
+    display: none;
+}
+
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-@media only screen and (max-height: 743px) {
+/* @media only screen and (max-height: 743px) {
     #sidenav {padding-top: 95px;}
     #sidenav a {font-size: 18px;}
     .default {position: absolute; top: 240px;}
@@ -187,19 +201,9 @@ h4 {
 }
 
 @media only screen and (max-width: 450px) {
-    #listArea {
-        display: grid;
-        grid-template-columns: repeat(1,1fr);
-        grid-template-rows: auto;
-    }
 }
 
 @media only screen and (max-width: 1440px) {
-    #listArea {
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
-        grid-template-rows: auto;
-    }
     .default {
         position: absolute; top: 320px; left: 320px;
     }
@@ -221,4 +225,4 @@ h4 {
     .default {
         position: absolute; top: 150px;
     }
-}
+} */

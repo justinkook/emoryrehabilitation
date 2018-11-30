@@ -112,19 +112,18 @@ input {
 }
 
 .submit {
-    border: none;
-    background-color: #d90007;
-    border-radius: 0px 5px 5px 0px;
-    cursor: pointer;
     display: none;
 }
-
-.search {
-    display: none;
-}
-
 .submit:hover {
     background-color: #d32323;
+}
+
+.btn-primary {
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .shortcuts {
