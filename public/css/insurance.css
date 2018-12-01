@@ -1,6 +1,7 @@
 body {
     margin: 0px;
     background: rgb(6, 67, 134);
+    background: rgba(6, 67, 134)
 }
 
 .wrapper {
@@ -14,13 +15,8 @@ ul, li {
 }
 
 main {
-    height: 100vh;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.45),
-        rgba(0, 0, 0, 0.45)  
-      ), url(../images/bckg.jpg);
     background-size: cover;
     opacity: .9;
 }
@@ -50,6 +46,28 @@ h6 {
     text-transform: uppercase;
     font-weight: 100;
 }
+
+.inputWithIcon input[text="text"] {
+        border: none;
+    }
+
+    .inputWithIcon {
+        position: relative;
+    }
+
+    .inputWithIcon i {
+        position: absolute;
+        left: 0;
+        top: 3px;
+        padding: 13px 12px;
+        padding-right: 20px;
+        color: rgb(6, 67, 134);
+        transition: .3s;
+    }
+
+    .inputWithIcon input[type="text"]:focus + p {
+        color: rgb(6, 67, 134);
+    }
 
 @keyframes fadein {
     from { opacity: 0; }
@@ -147,6 +165,7 @@ input[type=text]{
     border-radius: 5px;
     min-width: 280px;
     height: 45px;
+    padding-left: 40px;
     cursor: text;
 }
 

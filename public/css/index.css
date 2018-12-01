@@ -83,6 +83,8 @@ i {
     height: 105px;
     margin-bottom: 20px;
     display: flex;
+    justify-content: center;
+    padding-left: 50px;
 }
 
 .logo {
@@ -256,7 +258,6 @@ footer {
     background-color: inherit;
     font-family: inherit;
     margin: 0;
-    cursor: pointer;
     text-transform: uppercase;
 }
 
@@ -273,7 +274,6 @@ footer {
 .dropdown-content {
     display: none;
     text-transform: uppercase;
-    position: absolute;
     background-color: #f9f9f9;
     min-width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -297,30 +297,7 @@ footer {
     display: block;
 }
 
-/* Mobile Responsiveness */
-@media only screen and (max-width: 600px) {
-    
-    .logo {
-        margin-left: 70px;
-    }
-
-    .signup {
-        position: relative;
-        left: 156px;
-    }
-    
-    main {
-        margin: 0px;
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-    
-    form {
-        margin-left: 5px;
-        display: grid;
-    }
-
-    .inputWithIcon input[text="text"] {
+.inputWithIcon input[text="text"] {
         border: none;
     }
 
@@ -352,6 +329,30 @@ footer {
         color: rgb(6, 67, 134);
     }
 
+/* Mobile Responsiveness */
+@media only screen and (max-width: 600px) {
+    
+    .logo {
+        margin-left: 70px;
+    }
+
+    .signup {
+        position: relative;
+        left: 156px;
+    }
+    
+    main {
+        margin: 0px;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    
+    form {
+        margin-left: 5px;
+        display: grid;
+    }
+
+
     input {
         height: 60px;
         border-radius: 0px 5px 5px 0px;
@@ -370,4 +371,12 @@ footer {
     form {
         justify-content: center;
     }
+
+    .inputWithIcon .fa-child {
+        top: 7px;
+    }
+    .inputWithIcon .fa-search-location {
+        top: 55px;
+    }
+
 }

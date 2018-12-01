@@ -93,8 +93,6 @@ $('#insurance').on('click', function (e) {
     location.replace("/insurance")
 });
 
-
-
 /**
  * Creates random number between 0 and 9. This 
  * is used as an index to reference items 
