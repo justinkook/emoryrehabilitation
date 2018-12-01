@@ -23,7 +23,7 @@ const keywords = function (searchString, res) {
     let regex = { $regex: new RegExp(searchString, 'i') }
     let businesses = [];
 
-    db.Restaurant
+    db.Location
         .find()
         .or([
             { 'alias': regex },
@@ -49,7 +49,7 @@ const location = function (locationString, res) {
     let businesses = [];
     let regex = { $regex: new RegExp(locationString, 'i') }
 
-    db.Restaurant
+    db.Location
         .find()
         .or([
             { 'location.city': regex },
@@ -81,7 +81,7 @@ const keywordAndLocation = function (searchString, locationString, res) {
     let reg_searchTerm = { $regex: new RegExp(searchString, 'i') }
     let reg_location = { $regex: new RegExp(locationString, 'i') }
 
-    db.Restaurant
+    db.Location
         .find()
         .and([
 
