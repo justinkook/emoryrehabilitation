@@ -8,6 +8,7 @@ module.exports = function (app) {
 
     const location = new RestfulAPI('location', app, db.Location);
     location.find();
+    location.create();
 
     const insurance = new RestfulAPI('insurance', app, db.Insurance);
     insurance.find();

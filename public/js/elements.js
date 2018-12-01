@@ -25,7 +25,6 @@ const buildIndivBusinessBlock = function (businessData) {
     businessElement += `<div class='biz-attributes'>`;
     businessElement += `<div class='main-attributes'>`;
     businessElement += `<div class='search-result-title'><span class='indexed-biz-name'>${count}. <a id=${businessData.id} class='biz-name'  href='business?alias=${businessData.alias}'><span id='${businessData.alias}'>${businessData.name}</span></a></span></div>`; 
-    businessElement += `<div></div>`;
     businessElement += `<div class='price-category'><a class='biz-phone' href='tel:${businessData.phone}'>${formatPhoneNumbers(businessData.phone)}</a></div>`; 
     businessElement += `</div>`;
     businessElement += `<div class='secondary-attributes'>`;
@@ -34,11 +33,14 @@ const buildIndivBusinessBlock = function (businessData) {
     businessElement += `<span class='neighborhood-str-list'>${businessData.location.city}</span>`;
     businessElement += `</div>`;
     businessElement += `</div>`;
-    // businessElement += `<div class='biz-extra-info'>`;
-    // businessElement += `<span class='category-list'>${anchorCategories(businessData.categories)}</span>`;
+    businessElement += `<div class='biz-extra-info'>`;
+    businessElement += `<span class='category-list'>${anchorCategories(businessData.categories)}</span>`;
     businessElement += `</div>`;
     businessElement += `</div>`;
     businessElement += `</div>`;
+    businessElement += `</div>`;
+    businessElement += `</div>`;
+
     return businessElement;
 }
 

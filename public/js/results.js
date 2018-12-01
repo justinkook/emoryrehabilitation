@@ -91,11 +91,11 @@ if (locationIndexInput !== null) {
 
     function initMap() {
       $.ajax({
-        url: '/api/restaurant',
+        url: '/api/location',
         method: 'GET',
         dataType: 'json'
       }).then(function (data) {
-
+        console.log(data);
         const resultsId = [];
         $('.biz-attributes a').map(function () {
           resultsId.push(this.id)
@@ -124,7 +124,7 @@ if (locationIndexInput !== null) {
           tilt: 45,
           disableDefaultUI: true
         })
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 2; i++) {
           const marker = new google.maps.Marker({
             position: {
               lat: list[i].coordinates.latitude,
@@ -148,9 +148,7 @@ if (locationIndexInput !== null) {
 $('#submit').on('click', function (event) {
   event.preventDefault();
   count = 0;
-  let searchTag = $('#searchInput').val().trim();
   let locationTag = $('#locationInput').val().trim();
-  sessionStorage.setItem('searchTag', `${searchTag}`);
   sessionStorage.setItem('locationTag', `${locationTag}`);
   const geocode = () => {
     let location = sessionStorage.getItem('locationTag');
@@ -170,7 +168,7 @@ $('#submit').on('click', function (event) {
   geocode();
   const callAddressCity = function (shortName, cityState) {
     const newSearch = {
-      searchInput: sessionStorage.getItem('searchTag'),
+      searchInput: searchIndexInput,
       locationInput: shortName,
     };
 
@@ -179,8 +177,8 @@ $('#submit').on('click', function (event) {
         let htmlstr = '';
         businessData.forEach(e => {
           htmlstr += build.businessBlock(e);
-        });
-        $('#holder').html(htmlstr);
+          $('#holder').html(htmlstr);
+        })
         let lowerSearchInput = newSearch.searchInput.charAt(0).toUpperCase() + newSearch.searchInput.slice(1);
 
         if ($('#searchInput').val() !== '') {
@@ -199,7 +197,7 @@ $('#submit').on('click', function (event) {
 
     function initMap() {
       $.ajax({
-        url: '/api/restaurant',
+        url: '/api/location',
         method: 'GET',
         dataType: 'json'
       }).then(function (data) {
@@ -266,7 +264,7 @@ function initMap() {
     zoom: 18,
     zoomControl: true,
     zoomControlOptions: {
-      position: google.maps.ControlPosition.LEFT_TOP,
+      position: google.maps.ControlPosition.RIGHT_BOTTOM,
     },
     tilt: 45,
     disableDefaultUI: true

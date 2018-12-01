@@ -20,7 +20,7 @@ header {
 
 .header-container {
     background: white;
-    border-radius: 5px;
+    border-radius: 15px;
     width: 100vh;
     height: 50px;
     margin: 5px;
@@ -193,18 +193,34 @@ footer a.active {
     border-bottom: 3px red solid;
 }
 
+.scroll-up {
+    z-index: 2;
+    height: 3px;
+    width: 50px;
+    background: white;
+    position: absolute;
+    top: 15px;
+    left: 170px;
+    margin: 0;
+    padding: 2px;
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+
 .results {
     margin: auto;
     margin-top: 690px;
+    position: relative;
 }
 
 .card {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 16px;
     justify-content: center;
     align-content: center;
     border-left: none;
     border-right: none;
+    padding-top: 30px;
 }
 
 .tagFilter {
@@ -219,9 +235,9 @@ footer a.active {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 100px;
+    margin-bottom: 20px;
     width: auto;
     border-bottom: 1px solid #e6e6e6;
-    margin: 0 0 30px 0;
 }
 
 .biz-attributes {
@@ -243,10 +259,10 @@ footer a.active {
 }
 
 .media-avatar img {
-   border-radius: 4px;
-   object-fit: cover;
-   height: 90%;
-   width: 90%;
+    border-radius: 4px;
+    object-fit: cover;
+    height: 90%;
+    width: 90%;
 }
 
 .main-attributes {
@@ -368,7 +384,7 @@ a:hover {
 }
 
 .biz-phone {
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .biz-phone, .biz-address, .neighborhood-str-list {
@@ -510,5 +526,8 @@ address {
         display: flex;
         justify-content: right;
         align-items: center;
+    }
+    .scroll-up {
+        left: 220px;
     }
 }

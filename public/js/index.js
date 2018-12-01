@@ -1,6 +1,6 @@
 $('#submit-icon').on('click', function (e) {
     e.preventDefault();
-    let locationTag = $('#locationInput').val();
+    let locationTag = $('#locationInput').val().trim();
     let searchTag = $('#searchInput').val().trim();
     sessionStorage.setItem('searchTag', `${searchTag}`);
     sessionStorage.setItem('locationTag', `${locationTag}`);
@@ -9,7 +9,7 @@ $('#submit-icon').on('click', function (e) {
 
 $('form').on('submit', function (e) {
     e.preventDefault();
-    let locationTag = $('#locationInput').val();
+    let locationTag = $('#locationInput').val().trim();
     let searchTag = $('#searchInput').val().trim();
     sessionStorage.setItem('searchTag', `${searchTag}`);
     sessionStorage.setItem('locationTag', `${locationTag}`);

@@ -107,7 +107,7 @@ form {
     grid-template-rows: 1fr;
     padding: 20px;
     padding-bottom: 20px;
-    border-radius: 10px;
+    border-radius: 16px;
 }
 
 label {
@@ -138,12 +138,13 @@ input {
 #searchInput {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 0;
 }
 
 #locationInput {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
-    border-radius: 0 0 5px 5px;
+    border-radius: 0;
 }
 
 .submit {
@@ -156,6 +157,7 @@ input {
 #submit-icon {
     display: flex;
     margin-top: 5px;
+    margin-bottom: 5px;
     cursor: pointer;
     justify-content: center;
 }
@@ -165,7 +167,7 @@ input {
     padding: 18px;
     padding-left: 40px;
     padding-right: 40px;
-    border-radius: 10px;
+    border-radius: 16px;
     text-align: center;
     width: 80%;
     box-shadow: 1px 1px 5px grey;
@@ -309,7 +311,7 @@ footer {
     .inputWithIcon .fa-child {
         position: absolute;
         left: 0;
-        top: 14px;
+        top: 11px;
         padding: 9px 8px;
         padding-right: 20px;
         color: rgb(6, 67, 134);
@@ -319,7 +321,7 @@ footer {
     .inputWithIcon .fa-search-location {
         position: absolute;
         left: 0;
-        top: 74px;
+        top: 71px;
         padding: 9px 8px;
         padding-right: 20px;
         color: rgb(6, 67, 134);
