@@ -19,17 +19,21 @@
 </head>
 
 <body>
+    <div id="background-color">
     <main>
-        <a href="/" class="yelp"><img src="/images/emorylogo.png" class="logo" /></a>
+        <div class="yelp"><img src="/images/emorylogo.png" class="logo" /></div>
+        <div id="form-card">
         <form class="searchbar-home">
-            <label class="find">Find</label>
+            <div class="inputWithIcon">
             <input id="searchInput" type="text" onfocus="this.value=''" placeholder="Search for speciality services" />
-            <label class="location">Near</label>
+            <i class="fas fa-child"></i>
             <input id="locationInput" type="text" onfocus="this.value=''" placeholder="Enter a city, state, or ZIP code" />
-            <input class="submit" type="submit" id="submit">
-            <!-- <i id="submit" class="fas fa-search fa-2x">Search</i> -->
-            </button>
+            <i class="fas fa-search-location"></i>
+            <input class="submit" type="submit"/>
+        </div>
         </form>
+                <div id="submit-icon"><p class="fa-search">Search</p></div>
+        </div>
         <div class="dropdown"><button class="dropbtn">Language<i class="fas fa-caret-down"></i></button>
             <div class="shortcuts dropdown-content">
                 <li id="spanish" class="subhead ui blue top attached segment">
@@ -66,11 +70,10 @@
             </div>
         </div>
         <div class="dropdown"><button id="insurance" class="dropbtn">Accepted Insurances<i class="fas fa-caret-right"></i></button>
-
         </div>
+    </div>
     </main>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="js/auto-location.js"></script>

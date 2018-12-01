@@ -18,7 +18,7 @@
  * @since 1.0
  */
 const getUserLocation = function () {
-    axios.get('http://ip-api.com/json')
+    $.get('http://ip-api.com/json')
     .then(function(responseData) {
         setDefaultLocation(responseData);
     });

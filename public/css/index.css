@@ -5,7 +5,12 @@ body {
     background: rgba(0, 0, 0, .01);
     font-family: 'Roboto', sans-serif;
 }
-
+/*
+#background-color {
+    background: rgb(6, 67, 134);
+    height: 60vh;
+}
+*/
 p {
     font-size: 14px;
 }
@@ -63,10 +68,10 @@ li {
 }
 
 main {
-    margin-top: 120px;
+    padding-top: 60px;
     display: grid;
-    grid-template-rows: 200px 50px 50px;
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
 }
 
 i {
@@ -76,6 +81,7 @@ i {
 .yelp {
     width: 225px;
     height: 105px;
+    margin-bottom: 20px;
     display: flex;
 }
 
@@ -84,10 +90,23 @@ i {
     height: 105px;
 }
 
+#form-card {
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    margin-left: 20px;
+    margin-right: 20px;
+    background: white;
+    box-shadow: 1px 1px 5px grey;
+}
+
 form {
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 60px 420px 60px 420px 60px;
+    padding: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
 }
 
 label {
@@ -109,6 +128,21 @@ input {
     border: 1px solid rgb(6, 67, 134);
     font-size: 16px;
     color: rgb(6, 67, 134);
+    width: 300px;
+    padding: 15px;
+    padding-left: 40px;
+    width: 100%;
+}
+
+#searchInput {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+#locationInput {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 0 0 5px 5px;
 }
 
 .submit {
@@ -118,12 +152,29 @@ input {
     background-color: #d32323;
 }
 
-.btn-primary {
-    border-radius: 5px;
-    cursor: pointer;
+#submit-icon {
     display: flex;
+    margin-top: 5px;
+    cursor: pointer;
     justify-content: center;
-    align-items: center;
+}
+
+.fa-search {
+    cursor: pointer;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    box-shadow: 1px 1px 5px grey;
+    margin: 10px;
+    color: white;
+    background: rgba(6, 67, 134, .8);
+}
+
+.fa-search::before {
+    display: none;
 }
 
 .shortcuts {
@@ -205,6 +256,7 @@ footer {
     background-color: inherit;
     font-family: inherit;
     margin: 0;
+    cursor: pointer;
     text-transform: uppercase;
 }
 
@@ -259,32 +311,50 @@ footer {
     
     main {
         margin: 0px;
-        margin-top: 90px;
         display: grid;
-        grid-template-rows: 200px 150px 50px;
         grid-template-columns: 1fr;
     }
     
     form {
         margin-left: 5px;
         display: grid;
-        grid-template-rows: 70px 70px;
-        grid-template-columns: 60px 300px;
     }
 
-    label {
-        height: 60px;
-        border-radius: 5px 0px 0px 5px;
+    .inputWithIcon input[text="text"] {
+        border: none;
+    }
+
+    .inputWithIcon {
+        position: relative;
+    }
+
+    .inputWithIcon .fa-child {
+        position: absolute;
+        left: 0;
+        top: 14px;
+        padding: 9px 8px;
+        padding-right: 20px;
+        color: rgb(6, 67, 134);
+        transition: .3s;
+    }
+
+    .inputWithIcon .fa-search-location {
+        position: absolute;
+        left: 0;
+        top: 74px;
+        padding: 9px 8px;
+        padding-right: 20px;
+        color: rgb(6, 67, 134);
+        transition: .3s;
+    }
+
+    .inputWithIcon input[type="text"]:focus + p {
+        color: rgb(6, 67, 134);
     }
 
     input {
         height: 60px;
-        padding: 0px;
         border-radius: 0px 5px 5px 0px;
-    }
-
-    .fa-2x {
-        font-size: 1.75em;
     }
     
     footer {
