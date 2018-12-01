@@ -1,11 +1,11 @@
-// $('#submit').on('click', function (e) {
-//     e.preventDefault();
-//     let locationTag = $('#locationInput').val();
-//     let searchTag = $('#searchInput').val().trim();
-//     sessionStorage.setItem('searchTag', `${searchTag}`);
-//     sessionStorage.setItem('locationTag', `${locationTag}`);
-//     location.replace("/search")
-// });
+$('#submit-icon').on('click', function (e) {
+    e.preventDefault();
+    let locationTag = $('#locationInput').val();
+    let searchTag = $('#searchInput').val().trim();
+    sessionStorage.setItem('searchTag', `${searchTag}`);
+    sessionStorage.setItem('locationTag', `${locationTag}`);
+    location.replace("/search")
+});
 
 $('form').on('submit', function (e) {
     e.preventDefault();

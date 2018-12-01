@@ -1,7 +1,6 @@
 body {
     margin: 0px;
-    background: rgb(6, 67, 134);
-    background: rgba(6, 67, 134)
+    background: rgba(6, 67, 134, .1);
 }
 
 .wrapper {
@@ -21,24 +20,13 @@ main {
     opacity: .9;
 }
 
-h6 {
-    font-size: 20px;
-    color: white;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 .content {
     margin-top: 10px;
-    padding-left: 35px;
+    margin-left: 15px;
     padding-right: 35px;
     padding-top: 25px;
 }
 #listArea {
-    padding: 20px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
@@ -47,18 +35,28 @@ h6 {
     font-weight: 100;
 }
 
+h6 {
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: 100;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
 .inputWithIcon input[text="text"] {
         border: none;
     }
 
     .inputWithIcon {
         position: relative;
+        padding-left: 40px;
     }
 
     .inputWithIcon i {
         position: absolute;
-        left: 0;
-        top: 3px;
+        left: 40px;
+        top: 2px;
         padding: 13px 12px;
         padding-right: 20px;
         color: rgb(6, 67, 134);
@@ -114,7 +112,8 @@ tbody {
     justify-content: left;
     align-items: center;
     background-color: transparent;
-    margin: 5px 0;
+    margin: 1px;
+    color: black;
     transition: 0.5s;
 }
 tbody:nth-child(-n+18) {
@@ -151,18 +150,19 @@ th, td {
 
 tr {
     width: 100%;
-    border-bottom: 1px solid white;
-
+    background: white;
 }
 
 form {
     text-align: left;
+    margin-left: 10px;
 }
 
 input[type=text]{
     display: flex;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border: transparent;
+    border-radius: 10px;
     min-width: 280px;
     height: 45px;
     padding-left: 40px;
@@ -170,8 +170,14 @@ input[type=text]{
 }
 
 .fa-caret-left {
-    color: white;
+    position: absolute;
+    left: 5px;
+    top: 40px;
+    color: rgb(6, 67, 134);
     display: inline;
+    padding-left: 20px;
+    padding-right: 20px;
+    z-index: 3;
 }
 
 .fa-search {
