@@ -1,7 +1,7 @@
 # Emory Rehabilitation
 This is a mobile app for Emory Rehabilitation Outpatient services that allows users to search for Emory postacute care services by specialty type, location, and languages.
 
- ** Future Implementations: **
+ **Future Implementations:**
 
 * Login feature with personalized landing page
   - Shows user's doctor, insurance, upcoming appointments.
