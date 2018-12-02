@@ -9,6 +9,8 @@ This is a mobile app for Emory Rehabilitation Outpatient services that allows us
 * Each location shows hours and affiliated doctors.
 * Appointment reservation system if it does not conflict with Health-Connection
 
+* Swap Mongo database to Firestore for real time accepted insurances.
+
 ## Getting Started
 
 To get started with this project you will need to clone into the repository on your machine. Once you have cloned the repository you will need to run `npm install` to install all of the needed packages to run the app. After you have installed the needed packages you can start a local server by running `npm start` in your terminal. Now you are ready run our app locally. 
