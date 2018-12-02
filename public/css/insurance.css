@@ -153,6 +153,12 @@ tr {
     background: white;
 }
 
+tr:hover {
+    background-color: rgba(6,67,134,.8);
+    color: white;
+    transform: scale(1.01)
+}
+
 form {
     text-align: left;
     margin-left: 10px;
@@ -163,7 +169,7 @@ input[type=text]{
     margin-bottom: 10px;
     border: transparent;
     border-radius: 16px;
-    min-width: 280px;
+    width: 90%;
     height: 45px;
     padding-left: 40px;
     cursor: text;

@@ -204,7 +204,8 @@ footer a.active {
     margin: 0;
     padding: 2px;
     border: 1px solid grey;
-    border-radius: 15px;
+    border-left: none;
+    border-right: none;
 }
 
 .results {
