@@ -27,7 +27,7 @@ We are currently accepting contributions to this project. Feel free to open any 
 
 ## Authors
 
-* **Justin Kook** (www.justinkook.com)
+* **Justin Kook** (https://github.com/justinkook)
   
 ## License
 
