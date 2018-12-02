@@ -129,10 +129,9 @@ input {
     border: 1px solid rgb(6, 67, 134);
     font-size: 16px;
     color: rgb(6, 67, 134);
-    width: 300px;
     padding: 15px;
     padding-left: 40px;
-    width: 100%;
+    width: 85%
 }
 
 #searchInput {
@@ -296,7 +295,7 @@ footer {
     background-color: #ddd;
 }
 
-.dropdown:hover .dropdown-content {
+.show {
     display: block;
 }
 
@@ -311,7 +310,7 @@ footer {
     .inputWithIcon .fa-child {
         position: absolute;
         left: 0;
-        top: 11px;
+        top: 28px;
         padding: 9px 8px;
         padding-right: 20px;
         color: rgb(6, 67, 134);
@@ -321,7 +320,7 @@ footer {
     .inputWithIcon .fa-search-location {
         position: absolute;
         left: 0;
-        top: 71px;
+        top: 119px;
         padding: 9px 8px;
         padding-right: 20px;
         color: rgb(6, 67, 134);
@@ -354,6 +353,7 @@ footer {
 
     input {
         height: 60px;
+        width: 75%;
         border-radius: 0px 5px 5px 0px;
     }
     
@@ -386,5 +386,4 @@ footer {
     .inputWithIcon .fa-search-location {
         top: 55px;
     }
-
 }

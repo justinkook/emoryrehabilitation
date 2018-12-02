@@ -93,6 +93,14 @@ $('#insurance').on('click', function (e) {
     location.replace("/insurance")
 });
 
+$('#specdrop').on('click', function(e) {
+    $('#spec-content').toggleClass('show');
+});
+
+$('#langdrop').on('click', function(e) {
+    $('#lang-content').toggleClass('show');
+});
+
 /**
  * Creates random number between 0 and 9. This 
  * is used as an index to reference items 

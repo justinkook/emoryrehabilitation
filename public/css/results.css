@@ -211,6 +211,9 @@ footer a.active {
     margin: auto;
     margin-top: 690px;
     position: relative;
+    background: white;
+    padding: 10px;
+    border-radius: 16px;
 }
 
 .card {
@@ -234,10 +237,9 @@ footer a.active {
 .media-block {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 100px;
-    margin-bottom: 20px;
+    grid-template-rows: 85px;
+    margin-bottom: 5px;
     width: auto;
-    border-bottom: 1px solid #e6e6e6;
 }
 
 .biz-attributes {
@@ -252,17 +254,18 @@ footer a.active {
     width: 100%;
 }
 
-.media-story {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 1fr;
-}
-
 .media-avatar img {
     border-radius: 4px;
     object-fit: cover;
     height: 90%;
     width: 90%;
+}
+
+.media-story {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr;
+    border-bottom: 1px solid #e6e6e6;
 }
 
 .main-attributes {
