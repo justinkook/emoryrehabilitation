@@ -1,7 +1,5 @@
 # Emory Rehabilitation
-This is a mobile app for Emory Rehabilitation Outpatient services.
-
-This web app that allows users to search for Emory postacute care services by specialty type, location, and languages.
+This is a mobile app for Emory Rehabilitation Outpatient services that allows users to search for Emory postacute care services by specialty type, location, and languages.
 
 ## Getting Started
 
@@ -29,11 +27,7 @@ We are currently accepting contributions to this project. Feel free to open any 
 
 ## Authors
 
-* **Justin Kook** - Search by Location
-  * created html render for the search results
-  * standardized location inputs based on google geocoding api
-  * filtered search results based on price tags
-  * dynamic html title and ability to search only by location
+* **Justin Kook**
   
 ## License
 
