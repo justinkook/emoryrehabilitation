@@ -96,8 +96,8 @@ i {
     align-items: center;
     border-radius: 5px;
     border: 1px solid transparent;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     background: white;
     box-shadow: 1px 1px 5px grey;
 }
@@ -391,5 +391,11 @@ footer {
     }
     .inputWithIcon .fa-search-location {
         top: 55px;
+    }
+}
+
+@media only screen and (min-height: 375px) {
+    main {
+        padding-top: 25px;
     }
 }
