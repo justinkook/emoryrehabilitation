@@ -24,7 +24,7 @@ const buildIndivBusinessBlock = function (businessData) {
     businessElement += `<div class='media-story'>`;
     businessElement += `<div class='biz-attributes'>`;
     businessElement += `<div class='main-attributes'>`;
-    businessElement += `<div class='search-result-title'><span class='indexed-biz-name'>${count}. <a id=${businessData.id} class='biz-name'  href='business?alias=${businessData.alias}'><span id='${businessData.alias}'>${businessData.name}</span></a></span></div>`; 
+    businessElement += `<div class='search-result-title'><span class='indexed-biz-name'>${count}. <a id='${businessData.id}' class='biz-name' href='business?alias=${businessData.alias}'><span id='${businessData.alias}'>${businessData.name}</span></a></span></div>`; 
     businessElement += `<div class='price-category'><a class='biz-phone' href='tel:${businessData.phone}'>${formatPhoneNumbers(businessData.phone)}</a><span class='category-list'>${anchorCategories(businessData.categories)}</span></div>`; 
     businessElement += `</div>`;
     businessElement += `<div class='secondary-attributes'>`;

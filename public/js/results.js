@@ -15,11 +15,9 @@ const renderResults = function (data, page) {
   const initial = (10 * (page - 1)) + 1;
   count = initial - 1;
 
-  for (let i = initial; i < initial + 10 && i < data.length; i++) {
-    let e = data[i];
+  data.forEach(e => {
     htmlstr += build.businessBlock(e);
-  }
-
+  });
   $('#holder').html(htmlstr);
 };
 
@@ -50,7 +48,7 @@ if (locationIndexInput !== null) {
 
   const callAddressCityIndex = function (shortNameIndex, cityStateIndex) {
     const newSearchIndex = {
-      searchInput: searchIndexInput,
+      searchInput: sessionStorage.getItem('searchTag'),
       locationInput: shortNameIndex,
     };
 
@@ -95,7 +93,6 @@ if (locationIndexInput !== null) {
         method: 'GET',
         dataType: 'json'
       }).then(function (data) {
-        console.log(data);
         const resultsId = [];
         $('.biz-attributes a').map(function () {
           resultsId.push(this.id)
@@ -111,6 +108,7 @@ if (locationIndexInput !== null) {
             list.push(obj)
           }
         })
+
         const map = new google.maps.Map(document.getElementById('map'), {
           zoom: 11,
           zoomControl: true,
@@ -124,7 +122,7 @@ if (locationIndexInput !== null) {
           tilt: 45,
           disableDefaultUI: true
         })
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 10; i++) {
           const marker = new google.maps.Marker({
             position: {
               lat: list[i].coordinates.latitude,
@@ -168,7 +166,7 @@ $('#submit').on('click', function (event) {
   geocode();
   const callAddressCity = function (shortName, cityState) {
     const newSearch = {
-      searchInput: searchIndexInput,
+      searchInput: sessionStorage.getItem('searchTag'),
       locationInput: shortName,
     };
 
@@ -216,6 +214,7 @@ $('#submit').on('click', function (event) {
             list.push(obj)
           }
         })
+
         const map = new google.maps.Map(document.getElementById('map'), {
           zoom: 11,
           zoomControl: true,
