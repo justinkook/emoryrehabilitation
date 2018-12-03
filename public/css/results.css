@@ -37,6 +37,7 @@ form {
     justify-content: center;
     align-items: center;
     padding-left: 10px;
+    width: 80%;
     margin: 0;
 }
 
@@ -56,7 +57,7 @@ label {
 
 input {
     padding-left: 10px;
-    width: 15rem;
+    width: 75%;
     border: none;
     font-size: 16px;
     color: gray;
@@ -200,7 +201,7 @@ footer a.active {
     background: white;
     position: absolute;
     top: 15px;
-    left: 170px;
+    left: 180px;
     margin: 0;
     padding: 2px;
     border: 1px solid grey;
@@ -532,6 +533,12 @@ address {
         align-items: center;
     }
     .scroll-up {
-        left: 220px;
+        left: 235px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .scroll-up {
+        left: 135px;
     }
 }
