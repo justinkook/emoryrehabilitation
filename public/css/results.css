@@ -241,7 +241,7 @@ footer a.active {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 85px;
-    margin-bottom: 5px;
+    margin-bottom: 100px;
     width: auto;
 }
 
