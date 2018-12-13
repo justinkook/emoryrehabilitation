@@ -50,15 +50,16 @@ h6 {
 
     .inputWithIcon {
         position: relative;
-        padding-left: 40px;
+        display: inline-flex;
+        width: 100%;
     }
 
-    .inputWithIcon i {
+    .inputWithIcon #home {
         position: absolute;
-        left: 40px;
-        top: 2px;
-        padding: 13px 12px;
-        padding-right: 20px;
+        left: 0;
+        top: 0;
+        padding: 7px 12px;
+        padding-right: 25px;
         color: rgb(6, 67, 134);
         transition: .3s;
     }
@@ -175,20 +176,11 @@ input[type=text]{
     cursor: text;
 }
 
-.fa-caret-left {
-    position: absolute;
-    left: 5px;
-    top: 40px;
-    color: rgb(6, 67, 134);
-    display: inline;
-    padding-left: 20px;
-    padding-right: 20px;
-    z-index: 3;
-}
-
 .fa-search {
     color: white;
-    padding-top: 10px;
+    padding-top: 15px;
+    padding-left: 20px;
+    display: inline-flex;
     cursor: pointer;
     float: right;
 }
@@ -208,49 +200,3 @@ h4 {
 .hidden {
     display: none;
 }
-
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-/* @media only screen and (max-height: 743px) {
-    #sidenav {padding-top: 95px;}
-    #sidenav a {font-size: 18px;}
-    .default {position: absolute; top: 240px;}
-}
-
-@media only screen and (max-width: 1051px) {
-    #sidenav {
-        margin-left: -250px;
-    }
-    #sidenav.active {
-        margin-left: 0px;
-    }
-    .default {
-        position: absolute; top: 240px; left: 280px;
-    }
-}
-
-@media only screen and (max-width: 450px) {
-}
-
-@media only screen and (max-width: 1440px) {
-    .default {
-        position: absolute; top: 320px; left: 320px;
-    }
-}
-@media only screen and (max-width: 768px) {
-    .default {
-        position: absolute; left: 80px;
-    }
-}
-@media only screen and (max-height: 820px) {
-    #sidenav {
-        font-size: 18px;
-        padding-top: 155px;
-    }
-}
-@media only screen and (max-height: 620px) {
-    #sidenav {padding-top: 25px;}
-    #sidenav a {font-size: 16px;}
-    .default {
-        position: absolute; top: 150px;
-    }
-} */
