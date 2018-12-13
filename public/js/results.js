@@ -113,7 +113,6 @@ if (locationIndexInput !== null) {
         method: 'GET',
         dataType: 'json'
       }).then(function (data) {
-        console.log(_businessData);
         const resultsId = [];
         $('.biz-attributes a').map(function () {
           resultsId.push(this.id)
