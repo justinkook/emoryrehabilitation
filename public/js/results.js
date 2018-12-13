@@ -36,13 +36,17 @@ const calcDistance = (coord1, coord2) => {
  let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
  let d = R * c; 
  let miles = d * 0.62137;
- coordsList.push(miles);
+ coordsList.push(Math.round(miles * 10) / 10);
 }
 
 const renderResults = function (data, page) {
   let htmlstr = '';
   const initial = (10 * (page - 1)) + 1;
   count = initial - 1;
+  data.sort(function(a, b) {
+    return a[0] - b[0];
+  });
+  _businessData = data;
   for (let i = count; i < initial + 9 && i < data.length; i++) {
     let e = data[i];
     htmlstr += build.businessBlock(e);
@@ -84,7 +88,6 @@ if (locationIndexInput !== null) {
         calcDistance(centerCoord, businessData[i].coordinates)
         Array.prototype.push.apply(businessData[i], [coordsList[i]]);
         }
-        _businessData = businessData;
         renderResults(businessData, 1);
 
         for (let i = 2; i <= Math.ceil((businessData.length - 1) / 10); i++) {
@@ -105,11 +108,6 @@ if (locationIndexInput !== null) {
      */
 
     function initMap() {
-      $.ajax({
-        url: '/api/location',
-        method: 'GET',
-        dataType: 'json'
-      }).then(function (data) {
         const resultsId = [];
         $('.biz-attributes a').map(function () {
           resultsId.push(this.id)
@@ -120,7 +118,7 @@ if (locationIndexInput !== null) {
         });
 
         const list = [];
-        data.map(function (obj) {
+        _businessData.map(function (obj) {
           if (resultsIdFiltered.includes(obj.id)) {
             list.push(obj)
           }
@@ -136,7 +134,7 @@ if (locationIndexInput !== null) {
           disableDefaultUI: true
         })
         
-        for (let i = 0; i < list.length; i++) {
+        for (let i = 0; i<list.length; i++) {
           const marker = new google.maps.Marker({
             position: {
               lat: list[i].coordinates.latitude,
@@ -145,7 +143,7 @@ if (locationIndexInput !== null) {
             map: map,
             title: list[i].name,
             label: {
-              text: 'Emory',
+              text: `${i}`,
               fontSize: '10px',
             }
 
@@ -164,8 +162,6 @@ if (locationIndexInput !== null) {
         } else {
           handleLocationError(false, map.getCenter());
         }
-
-      });
     }
     initMap();
   }
@@ -188,11 +184,6 @@ $('#submit').on('click', function (event) {
         let locationIndex = locationOptions.length - 2;
         callAddressCity(locationOptions[locationIndex], formattedAddress, centerCoord)
       })
-
-      .catch(function (err) {
-        console.log(err);
-      })
-
   };
   geocode();
   const callAddressCity = function (shortName, cityStateIndex, centerCoord) {
@@ -203,11 +194,10 @@ $('#submit').on('click', function (event) {
 
     $.post('/api/search', newSearch)
       .then(function (businessData) {
-        for (i = 0; i < businessData.length; i++) {
+        for (i=0; i<businessData.length; i++) {
           calcDistance(centerCoord, businessData[i].coordinates)
-        }
-
-        _businessData = businessData;
+          Array.prototype.push.apply(businessData[i], [coordsList[i]]);
+          }
         renderResults(businessData, 1);
 
         for (let i = 2; i <= Math.ceil((businessData.length - 1) / 10); i++) {
@@ -238,7 +228,6 @@ $('#submit').on('click', function (event) {
             list.push(obj)
           }
         })
-
         const map = new google.maps.Map(document.getElementById('map'), {
           zoom: 10,
           zoomControl: true,
