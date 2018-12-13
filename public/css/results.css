@@ -533,9 +533,6 @@ address {
         justify-content: right;
         align-items: center;
     }
-    .scroll-up {
-        left: 235px;
-    }
 }
 
 @media only screen and (max-width: 320px) {
