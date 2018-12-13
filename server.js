@@ -15,6 +15,7 @@ app.use(express.static('public'));
 
 // Connect to the Mongo DB using the inventorymaster database (will be created if it doesn't exist)
 mongoose.connect('mongodb://admin:password1@ds117111.mlab.com:17111/heroku_qkzxjhrm', { useNewUrlParser: true });
+mongoose.set("useCreateIndex", true);
 
 // Routes
 // API Routes (require from routes file and pass in Express app)

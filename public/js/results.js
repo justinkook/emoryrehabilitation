@@ -94,7 +94,7 @@ if (locationIndexInput !== null) {
         })
 
         const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 11,
+          zoom: 10,
           zoomControl: true,
           zoomControlOptions: {
             position: google.maps.ControlPosition.RIGHT_BOTTOM,
@@ -197,7 +197,7 @@ $('#submit').on('click', function (event) {
         })
 
         const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 11,
+          zoom: 10,
           zoomControl: true,
           zoomControlOptions: {
             position: google.maps.ControlPosition.RIGHT_BOTTOM,
