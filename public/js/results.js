@@ -7,39 +7,43 @@
 let searchIndexInput = sessionStorage.getItem('searchTag');
 let locationIndexInput = sessionStorage.getItem('locationTag');
 let _businessData = {};
+let coordsList = [];
 
+/**
+ * gets two coordinate inputs from api/search then calculates distance in miles
+ * @param {Object} coord1 - location input coordinates {lat: 30, lng: -84}
+ * @param {Object} coord2 - business data coordinates {latitude: 30, longitude: -84}
+ */
 const calcDistance = (coord1, coord2) => {
   Number.prototype.toRad = function() {
     return this * Math.PI / 180;
  }
- var lat2 = coord2.latitude; 
- var lon2 = coord2.longitude; 
- var lat1 = coord1.lat; 
- var lon1 = coord1.lng; 
+ let lat2 = coord2.latitude;
+ let lon2 = coord2.longitude 
+ let lat1 = coord1.lat;
+ let lon1 = coord1.lng;
  
- var R = 6371; // km 
+ let R = 6371; // km 
  //has a problem with the .toRad() method below.
- var x1 = lat2-lat1;
- var dLat = x1.toRad();  
- var x2 = lon2-lon1;
- var dLon = x2.toRad();  
+ let x1 = lat2-lat1;
+ let dLat = x1.toRad();  
+ let x2 = lon2-lon1;
+ let dLon = x2.toRad();
  
- var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+ let a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
                  Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
                  Math.sin(dLon/2) * Math.sin(dLon/2);  
- var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
- var d = R * c; 
-
- console.log(d);
+ let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+ let d = R * c; 
+ let miles = d * 0.62137;
+ coordsList.push(miles);
 }
-calcDistance({lat: 33.683, lng: -84.448}, {latitude: 33.7, longitude: -84.5})
 
 const renderResults = function (data, page) {
   let htmlstr = '';
   const initial = (10 * (page - 1)) + 1;
   count = initial - 1;
-
-  for (let i = initial; i < initial + 10 && i < data.length; i++) {
+  for (let i = count; i < initial + 9 && i < data.length; i++) {
     let e = data[i];
     htmlstr += build.businessBlock(e);
   }
@@ -53,12 +57,12 @@ if (locationIndexInput !== null) {
     const queryURL = 'api/geocode/' + location;
     $.get(queryURL)
       .then(function (data) {
-        console.log(data.results[0].geometry.location);
+        let centerCoord = data.results[0].geometry.location;
         let formattedAddress = data.results[0].formatted_address;
         let addressComponents = data.results[0].address_components;
         let locationOptions = addressComponents.map(e => e.short_name);
         let locationIndex = locationOptions.length - 2;
-        callAddressCityIndex(locationOptions[locationIndex], formattedAddress)
+        callAddressCityIndex(locationOptions[locationIndex], formattedAddress, centerCoord);
       })
   };
   geocode();
@@ -68,7 +72,7 @@ if (locationIndexInput !== null) {
    * @return {object} businessData - filtered business by tag and location
    */
 
-  const callAddressCityIndex = function (shortNameIndex, cityState) {
+  const callAddressCityIndex = function (shortNameIndex, cityState, centerCoord) {
     const newSearchIndex = {
       searchInput: sessionStorage.getItem('searchTag'),
       locationInput: shortNameIndex,
@@ -76,7 +80,10 @@ if (locationIndexInput !== null) {
 
     $.post('/api/search', newSearchIndex)
       .then(function (businessData) {
-        console.log(businessData.map( e => e.coordinates));
+        for (i=0; i<businessData.length; i++) {
+        calcDistance(centerCoord, businessData[i].coordinates)
+        Array.prototype.push.apply(businessData[i], [coordsList[i]]);
+        }
         _businessData = businessData;
         renderResults(businessData, 1);
 
@@ -146,7 +153,7 @@ if (locationIndexInput !== null) {
         }
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
+            let pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
@@ -174,11 +181,12 @@ $('#submit').on('click', function (event) {
     const queryURL = 'api/geocode/' + location;
     $.get(queryURL)
       .then(function (res) {
+        let centerCoord = res.results[0].geometry.location;
         let formattedAddress = res.results[0].formatted_address;
         let addressComponents = res.results[0].address_components;
         let locationOptions = addressComponents.map(e => e.short_name);
         let locationIndex = locationOptions.length - 2;
-        callAddressCity(locationOptions[locationIndex], formattedAddress)
+        callAddressCity(locationOptions[locationIndex], formattedAddress, centerCoord)
       })
 
       .catch(function (err) {
@@ -187,7 +195,7 @@ $('#submit').on('click', function (event) {
 
   };
   geocode();
-  const callAddressCity = function (shortName, cityStateIndex) {
+  const callAddressCity = function (shortName, cityStateIndex, centerCoord) {
     const newSearch = {
       searchInput: sessionStorage.getItem('searchTag'),
       locationInput: shortName,
@@ -195,6 +203,10 @@ $('#submit').on('click', function (event) {
 
     $.post('/api/search', newSearch)
       .then(function (businessData) {
+        for (i = 0; i < businessData.length; i++) {
+          calcDistance(centerCoord, businessData[i].coordinates)
+        }
+
         _businessData = businessData;
         renderResults(businessData, 1);
 
@@ -253,7 +265,7 @@ $('#submit').on('click', function (event) {
 
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
+            let pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };

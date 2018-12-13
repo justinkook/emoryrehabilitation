@@ -28,7 +28,7 @@ const buildIndivBusinessBlock = function (businessData) {
     businessElement += `<div class='price-category'><a class='biz-phone' href='tel:${businessData.phone}'>${formatPhoneNumbers(businessData.phone)}</a><span class='category-list'>${anchorCategories(businessData.categories)}</span></div>`; 
     businessElement += `</div>`;
     businessElement += `<div class='secondary-attributes'>`;
-    businessElement += `<span class='distance-away'>0.5m</span>`;
+    businessElement += `<span class='distance-away'>${businessData[0]}m</span>`;
     businessElement += `<address class='biz-address'>${businessData.location.address1}</address>`;
     businessElement += `<span class='neighborhood-str-list'>${businessData.location.city}</span>`;
     businessElement += `</div>`;
