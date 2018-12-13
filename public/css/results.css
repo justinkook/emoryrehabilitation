@@ -7,7 +7,6 @@ body {
 }
 
 header {
-    background: rgba(6, 67, 134, 1);
     height: 60px;
     width: 100%;
     z-index: 2;
@@ -27,6 +26,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: left;
+    box-shadow: 1px 1px 1px grey;
 }
 
 .fa-search {
@@ -201,7 +201,7 @@ footer a.active {
     background: white;
     position: absolute;
     top: 15px;
-    left: 180px;
+    left: 44%;
     margin: 0;
     padding: 2px;
     border: 1px solid grey;
@@ -226,6 +226,7 @@ footer a.active {
     border-left: none;
     border-right: none;
     padding-top: 30px;
+    margin-bottom: 20px;
 }
 
 .tagFilter {

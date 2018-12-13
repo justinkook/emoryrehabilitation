@@ -75,7 +75,7 @@ $('#vesti').on('click', function (e) {
 $('#women').on('click', function (e) {
     e.preventDefault();
     let locationTag = $('#locationInput').val();
-    sessionStorage.setItem('searchTag', `women`);
+    sessionStorage.setItem('searchTag', `women's`);
     sessionStorage.setItem('locationTag', `${locationTag}`);
     location.replace("/search")
 });
