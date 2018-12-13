@@ -35,7 +35,6 @@ const setDefaultLocation =  function (responseData) {
     let locationInput = $("#locationInput");
     let formattedLocation = `${responseData.city}, ${responseData.region}`;
     locationInput.val(formattedLocation);
-    sessionStorage.setItem('locationTag', 'GA')
 }
 
 getUserLocation();

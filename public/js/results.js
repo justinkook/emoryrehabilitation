@@ -29,14 +29,12 @@ if (locationIndexInput !== null) {
     const queryURL = 'api/geocode/' + location;
     $.get(queryURL)
       .then(function (data) {
+        let formattedAddress = data.results[0].formatted_address;
         let addressComponents = data.results[0].address_components;
-        callAddressCityIndex(addressComponents[0].short_name)
+        let locationOptions = addressComponents.map(e => e.short_name);
+        let locationIndex = locationOptions.length - 2;
+        callAddressCityIndex(locationOptions[locationIndex], formattedAddress)
       })
-
-      .catch(function (err) {
-        console.log(err);
-      })
-
   };
   geocode();
   /**
@@ -45,7 +43,7 @@ if (locationIndexInput !== null) {
    * @return {object} businessData - filtered business by tag and location
    */
 
-  const callAddressCityIndex = function (shortNameIndex) {
+  const callAddressCityIndex = function (shortNameIndex, cityState) {
     const newSearchIndex = {
       searchInput: sessionStorage.getItem('searchTag'),
       locationInput: shortNameIndex,
@@ -60,6 +58,8 @@ if (locationIndexInput !== null) {
           $('footer').append(`<a>${i}</a>`);
         }
       })
+
+      $('#locationInput').val(cityState);
 
     /**
      * -Google Maps API, Use returned restaurant lat/lon to add 10 pins to the map.
@@ -141,8 +141,8 @@ if (locationIndexInput !== null) {
 $('#submit').on('click', function (event) {
   event.preventDefault();
   count = 0;
-  let locationTag = $('#locationInput').val().trim();
-  sessionStorage.setItem('locationTag', `${locationTag}`);
+  let locationEnter = $('#locationInput').val().trim();
+  sessionStorage.setItem('locationTag', locationEnter);
   const geocode = () => {
     let location = sessionStorage.getItem('locationTag');
     const queryURL = 'api/geocode/' + location;
@@ -150,7 +150,9 @@ $('#submit').on('click', function (event) {
       .then(function (res) {
         let formattedAddress = res.results[0].formatted_address;
         let addressComponents = res.results[0].address_components;
-        callAddressCity(addressComponents[0].short_name, formattedAddress)
+        let locationOptions = addressComponents.map(e => e.short_name);
+        let locationIndex = locationOptions.length - 2;
+        callAddressCity(locationOptions[locationIndex], formattedAddress)
       })
 
       .catch(function (err) {
