@@ -148,8 +148,9 @@ $('#submit').on('click', function (event) {
     const queryURL = 'api/geocode/' + location;
     $.get(queryURL)
       .then(function (res) {
+        let formattedAddress = res.results[0].formatted_address;
         let addressComponents = res.results[0].address_components;
-        callAddressCity(addressComponents[0].short_name)
+        callAddressCity(addressComponents[0].short_name, formattedAddress)
       })
 
       .catch(function (err) {
@@ -158,7 +159,7 @@ $('#submit').on('click', function (event) {
 
   };
   geocode();
-  const callAddressCity = function (shortName) {
+  const callAddressCity = function (shortName, cityStateIndex) {
     const newSearch = {
       searchInput: sessionStorage.getItem('searchTag'),
       locationInput: shortName,
@@ -173,6 +174,8 @@ $('#submit').on('click', function (event) {
           $('footer').append(`<a>${i}</a>`);
         }
       })
+
+      $('#locationInput').val(`${cityStateIndex}`);
 
     function initMap() {
       $.ajax({
