@@ -43,10 +43,6 @@ const renderResults = function (data, page) {
   let htmlstr = '';
   const initial = (10 * (page - 1)) + 1;
   count = initial - 1;
-  data.sort(function(a, b) {
-    return a[0] - b[0];
-  });
-  _businessData = data;
   for (let i = count; i < initial + 9 && i < data.length; i++) {
     let e = data[i];
     htmlstr += build.businessBlock(e);
@@ -88,6 +84,10 @@ if (locationIndexInput !== null) {
         calcDistance(centerCoord, businessData[i].coordinates)
         Array.prototype.push.apply(businessData[i], [coordsList[i]]);
         }
+        businessData.sort(function(a, b) {
+          return a[0] - b[0];
+        });
+        _businessData = businessData;
         renderResults(businessData, 1);
 
         for (let i = 2; i <= Math.ceil((businessData.length - 1) / 10); i++) {
@@ -116,7 +116,7 @@ if (locationIndexInput !== null) {
         const resultsId = [];
         $('.biz-attributes a').map(function () {
           resultsId.push(this.id)
-        });
+        }); 
 
         const resultsIdFiltered = resultsId.filter(function (e) {
           return e != "";
@@ -139,17 +139,17 @@ if (locationIndexInput !== null) {
           disableDefaultUI: true
         })
         
-        for (let i = 0; i<list.length; i++) {
+        for (let i = 0; i<_businessData.length; i++) {
           const marker = new google.maps.Marker({
             position: {
-              lat: list[i].coordinates.latitude,
-              lng: list[i].coordinates.longitude
+              lat:  _businessData[i].coordinates.latitude,
+              lng:  _businessData[i].coordinates.longitude
             },
             map: map,
-            title: list[i].name,
+            title:  _businessData[i].name,
             label: {
-              text: `${i}`,
-              fontSize: '10px',
+              text: `${i+1}`,
+              fontSize: '16px',
             }
 
           })
@@ -205,6 +205,10 @@ $('#submit').on('click', function (event) {
           calcDistance(centerCoord, businessData[i].coordinates)
           Array.prototype.push.apply(businessData[i], [coordsList[i]]);
           }
+          businessData.sort(function(a, b) {
+            return a[0] - b[0];
+          });
+          _businessData = businessData;
         renderResults(businessData, 1);
 
         for (let i = 2; i <= Math.ceil((businessData.length - 1) / 10); i++) {
@@ -244,18 +248,19 @@ $('#submit').on('click', function (event) {
           tilt: 45,
           disableDefaultUI: true
         })
-        for (let i = 0; i < list.length; i++) {
+        for (let i = 0; i<_businessData.length; i++) {
           const marker = new google.maps.Marker({
             position: {
-              lat: list[i].coordinates.latitude,
-              lng: list[i].coordinates.longitude
+              lat:  _businessData[i].coordinates.latitude,
+              lng:  _businessData[i].coordinates.longitude
             },
             map: map,
-            title: list[i].name,
+            title:  _businessData[i].name,
             label: {
-              text: 'Emory',
-              fontSize: '10px',
+              text: `${i+1}`,
+              fontSize: '16px',
             }
+
           })
         }
 
