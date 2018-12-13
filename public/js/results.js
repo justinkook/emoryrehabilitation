@@ -108,6 +108,11 @@ if (locationIndexInput !== null) {
      */
 
     function initMap() {
+      $.ajax({
+        url: '/api/location',
+        method: 'GET',
+        dataType: 'json'
+      }).then(function (data) {
         const resultsId = [];
         $('.biz-attributes a').map(function () {
           resultsId.push(this.id)
@@ -118,7 +123,7 @@ if (locationIndexInput !== null) {
         });
 
         const list = [];
-        _businessData.map(function (obj) {
+        data.map(function (obj) {
           if (resultsIdFiltered.includes(obj.id)) {
             list.push(obj)
           }
