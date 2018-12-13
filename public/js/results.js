@@ -15,23 +15,22 @@ const renderResults = function (data, page) {
   const initial = (10 * (page - 1)) + 1;
   count = initial - 1;
 
-  data.forEach(e => {
+  for (let i = initial; i < initial + 10 && i < data.length; i++) {
+    let e = data[i];
     htmlstr += build.businessBlock(e);
-  });
+  }
   $('#holder').html(htmlstr);
 };
 
 if (locationIndexInput !== null) {
-
   // Calls Google Geocoding API with location param as LocationIndexInput
   const geocode = () => {
     let location = locationIndexInput;
     const queryURL = 'api/geocode/' + location;
     $.get(queryURL)
       .then(function (data) {
-        let formattedAddress = data.results[0].formatted_address;
         let addressComponents = data.results[0].address_components;
-        callAddressCityIndex(addressComponents[0].short_name, formattedAddress)
+        callAddressCityIndex(addressComponents[0].short_name)
       })
 
       .catch(function (err) {
@@ -46,7 +45,7 @@ if (locationIndexInput !== null) {
    * @return {object} businessData - filtered business by tag and location
    */
 
-  const callAddressCityIndex = function (shortNameIndex, cityStateIndex) {
+  const callAddressCityIndex = function (shortNameIndex) {
     const newSearchIndex = {
       searchInput: sessionStorage.getItem('searchTag'),
       locationInput: shortNameIndex,
@@ -60,21 +59,6 @@ if (locationIndexInput !== null) {
         for (let i = 2; i <= Math.ceil((businessData.length - 1) / 10); i++) {
           $('footer').append(`<a>${i}</a>`);
         }
-
-        let lowerSearchInput = newSearchIndex.searchInput.charAt(0).toUpperCase() + newSearchIndex.searchInput.slice(1);
-
-        if (newSearchIndex.searchInput !== '') {
-          $('#bestNear').html(`Best ${lowerSearchInput} near ${cityStateIndex}`);
-          $('#title').text(`Best ${lowerSearchInput} near ${cityStateIndex}`);
-        } else {
-          $('#bestNear').html(`Places near ${cityStateIndex}`);
-          $('#title').text(`Places near ${cityStateIndex}`);
-        }
-        $('#searchInput').val(`${lowerSearchInput}`);
-        $('#locationInput').val(`${cityStateIndex}`);
-      })
-      .catch(function (err) {
-        console.log(err);
       })
 
     /**
@@ -115,14 +99,11 @@ if (locationIndexInput !== null) {
           zoomControlOptions: {
             position: google.maps.ControlPosition.RIGHT_BOTTOM,
           },
-          center: {
-            lat: list[0].coordinates.latitude,
-            lng: list[0].coordinates.longitude
-          },
           tilt: 45,
           disableDefaultUI: true
         })
-        for (let i = 0; i < 10; i++) {
+        
+        for (let i = 0; i < list.length; i++) {
           const marker = new google.maps.Marker({
             position: {
               lat: list[i].coordinates.latitude,
@@ -137,6 +118,20 @@ if (locationIndexInput !== null) {
 
           })
         }
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            map.setCenter(pos);
+          }, function () {
+            handleLocationError(true, map.getCenter());
+          });
+        } else {
+          handleLocationError(false, map.getCenter());
+        }
+
       });
     }
     initMap();
@@ -153,9 +148,8 @@ $('#submit').on('click', function (event) {
     const queryURL = 'api/geocode/' + location;
     $.get(queryURL)
       .then(function (res) {
-        let formattedAddress = res.results[0].formatted_address;
         let addressComponents = res.results[0].address_components;
-        callAddressCity(addressComponents[0].short_name, formattedAddress)
+        callAddressCity(addressComponents[0].short_name)
       })
 
       .catch(function (err) {
@@ -164,7 +158,7 @@ $('#submit').on('click', function (event) {
 
   };
   geocode();
-  const callAddressCity = function (shortName, cityState) {
+  const callAddressCity = function (shortName) {
     const newSearch = {
       searchInput: sessionStorage.getItem('searchTag'),
       locationInput: shortName,
@@ -172,25 +166,12 @@ $('#submit').on('click', function (event) {
 
     $.post('/api/search', newSearch)
       .then(function (businessData) {
-        let htmlstr = '';
-        businessData.forEach(e => {
-          htmlstr += build.businessBlock(e);
-          $('#holder').html(htmlstr);
-        })
-        let lowerSearchInput = newSearch.searchInput.charAt(0).toUpperCase() + newSearch.searchInput.slice(1);
+        _businessData = businessData;
+        renderResults(businessData, 1);
 
-        if ($('#searchInput').val() !== '') {
-          $('#bestNear').html(`Best ${lowerSearchInput} near ${cityState}`);
-          $('#title').text(`Best ${lowerSearchInput} near ${cityState}`);
-        } else {
-          $('#bestNear').html(`Places near ${cityState}`);
-          $('#title').text(`Places near ${cityState}`);
-        };
-        $('#searchInput').val(`${lowerSearchInput}`);
-        $('#locationInput').val(`${cityState}`);
-      })
-      .catch(function (err) {
-        console.log(err);
+        for (let i = 2; i <= Math.ceil((businessData.length - 1) / 10); i++) {
+          $('footer').append(`<a>${i}</a>`);
+        }
       })
 
     function initMap() {
@@ -221,14 +202,10 @@ $('#submit').on('click', function (event) {
           zoomControlOptions: {
             position: google.maps.ControlPosition.RIGHT_BOTTOM,
           },
-          center: {
-            lat: list[0].coordinates.latitude,
-            lng: list[0].coordinates.longitude
-          },
           tilt: 45,
           disableDefaultUI: true
         })
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < list.length; i++) {
           const marker = new google.maps.Marker({
             position: {
               lat: list[i].coordinates.latitude,
@@ -240,9 +217,23 @@ $('#submit').on('click', function (event) {
               text: 'Emory',
               fontSize: '10px',
             }
-
           })
         }
+
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            map.setCenter(pos);
+          }, function () {
+            handleLocationError(true, map.getCenter());
+          });
+        } else {
+          handleLocationError(false, map.getCenter());
+        }
+
       });
     }
     initMap();
@@ -257,8 +248,8 @@ let map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {
-      lat: -34.397,
-      lng: 150.644
+      lat: 33.7490,
+      lng: -84.3880
     },
     zoom: 18,
     zoomControl: true,
@@ -270,8 +261,8 @@ function initMap() {
   });
   let marker = new google.maps.Marker({
     position: {
-      lat: -34.397,
-      lng: 150.644
+      lat: 33.7490,
+      lng: -84.3880
     },
     map: map,
     title: "You are here!",
@@ -292,33 +283,6 @@ function initMap() {
     handleLocationError(false, map.getCenter());
   }
 }
-/**
- * -Changes Map text on expand of window, rotates chevron
- */
-const lessMoreToggle = function () {
-  if ($('.map-header a span').text() === "Mo' Map") {
-    $('.map-header a span').text("Less Map");
-    $('.rotate').toggleClass('left');
-    $('.media-story').addClass('newgrid');
-    $('.media-block').addClass('gridnew');
-    $('.secondary-attributes, .biz-extra-info').addClass('hide');
-  } else {
-    $('.map-header a span').text("Mo' Map");
-    $('.rotate').toggleClass('left');
-    $('.media-story').removeClass('newgrid');
-    $('.media-block').removeClass('gridnew');
-    $('.secondary-attributes, .biz-extra-info').removeClass('hide');
-  }
-}
-
-/**
- * -On click function calls LessMoreToggle
- */
-$('.map-header a').on('click', function (e) {
-  e.preventDefault();
-  lessMoreToggle();
-  $('.result-map').toggleClass('mo-map');
-});
 
 $('footer').on('click', 'a', function (e) {
   $('footer a').each(function () {
@@ -329,15 +293,3 @@ $('footer').on('click', 'a', function (e) {
 
   renderResults(_businessData, $(this).text());
 });
-
-/* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("searchBar").style.top = "0";
-  } else {
-    document.getElementById("searchBar").style.top = "-55px";
-  }
-  prevScrollpos = currentScrollPos;
-}
