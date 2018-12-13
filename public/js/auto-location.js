@@ -33,7 +33,7 @@ const getUserLocation = function () {
  */
 const setDefaultLocation =  function (responseData) {
     let locationInput = $("#locationInput");
-    let formattedLocation = `${responseData.city}, ${responseData.region}`;
+    let formattedLocation = `${responseData.city}, ${responseData.region} ${responseData.zip}`;
     locationInput.val(formattedLocation);
 }
 
