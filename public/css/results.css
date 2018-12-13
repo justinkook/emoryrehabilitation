@@ -27,6 +27,14 @@ header {
     align-items: center;
     justify-content: left;
     box-shadow: 1px 1px 1px grey;
+    position: fixed;
+    /* Make it stick/fixed */
+    top: 0;
+    /* Stay on top */
+    width: 100%;
+    /* Full width */
+    transition: top 0.3s;
+    /* Transition effect when sliding down (and up) */
 }
 
 .fa-search {
@@ -72,7 +80,8 @@ input {
     background-color: #8d0005;
 }
 
-.fa-utensils, .fa-city {
+.fa-utensils,
+.fa-city {
     color: gray;
 }
 
@@ -109,7 +118,7 @@ input {
 
 .dollar {
     display: grid;
-    grid-template-rows: 1fr; 
+    grid-template-rows: 1fr;
     grid-template-columns: 40px 40px 50px 55px;
 }
 
@@ -118,8 +127,8 @@ button[data-tool-tip] {
     position: relative;
 }
 
- button[data-tool-tip]::after{
-    content:attr(data-tool-tip);
+button[data-tool-tip]::after {
+    content: attr(data-tool-tip);
     display: block;
     position: absolute;
     background-color: black;
@@ -133,7 +142,8 @@ button[data-tool-tip] {
     transform: scale(0);
     transition: ease-out 150ms;
 }
- button[data-tool-tip]:hover::after {
+
+button[data-tool-tip]:hover::after {
     transform: scale(1);
     bottom: 100%;
 }
@@ -144,7 +154,8 @@ button[data-tool-tip] {
     margin-bottom: 10px;
 }
 
-#bestNear, #paginationCount {
+#bestNear,
+#paginationCount {
     display: inline-block;
     padding-top: 35px;
 }
@@ -233,8 +244,9 @@ footer a.active {
     background-color: white;
     /* border: 1px solid #e6e6e6; */
 }
- .tagFilter:hover {
-    box-shadow:black;
+
+.tagFilter:hover {
+    box-shadow: black;
 }
 
 .media-block {
@@ -393,12 +405,19 @@ a:hover {
     margin-top: 5px;
 }
 
-.biz-phone, .biz-address, .neighborhood-str-list {
+.biz-phone,
+.biz-address,
+.neighborhood-str-list {
     display: block;
     margin-bottom: 6px;
 }
 
-.biz-phone, .biz-address, .neighborhood-str-list, .price-category, .biz-rating, .review-count {
+.biz-phone,
+.biz-address,
+.neighborhood-str-list,
+.price-category,
+.biz-rating,
+.review-count {
     vertical-align: middle;
     line-height: 17.9999px;
 }
@@ -432,7 +451,7 @@ address {
     padding: 6px 0;
 }
 
-.map-header a{
+.map-header a {
     align-self: center;
     margin-left: 10px;
     font-size: 13px;
@@ -473,16 +492,16 @@ address {
     width: 628px;
 }
 
-.rotate{
+.rotate {
     -moz-transition: all .7s linear;
     -webkit-transition: all .7s linear;
     transition: all .7s linear;
 }
 
-.rotate.left{
-    -moz-transform:rotate(-180deg);
-    -webkit-transform:rotate(-180deg);
-    transform:rotate(-180deg);
+.rotate.left {
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
 }
 
 .hide {
@@ -499,7 +518,9 @@ address {
     height: auto;
 }
 
-.desktop-logo, .about-us, .insurance {
+.desktop-logo,
+.about-us,
+.insurance {
     display: none;
 }
 
@@ -508,9 +529,11 @@ address {
     .results-map {
         height: 100vh;
     }
+
     .background {
         height: 100%;
     }
+
     .results {
         width: 500px;
         margin-left: 20px;
@@ -518,6 +541,7 @@ address {
         display: flex;
         justify-content: left;
     }
+
     header {
         padding-left: 20px;
         justify-content: left;
