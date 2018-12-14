@@ -130,10 +130,14 @@ if (locationIndexInput !== null) {
         })
 
         const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
+          zoom: 12,
           zoomControl: true,
           zoomControlOptions: {
             position: google.maps.ControlPosition.RIGHT_BOTTOM,
+          },
+          center: {
+            lat: _businessData[0].coordinates.latitude,
+            lng: _businessData[0].coordinates.longitude
           },
           tilt: 45,
           disableDefaultUI: true
@@ -151,23 +155,8 @@ if (locationIndexInput !== null) {
               text: `${i+1}`,
               fontSize: '16px',
             }
-
           })
         }
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function (position) {
-            let pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            map.setCenter(pos);
-          }, function () {
-            handleLocationError(true, map.getCenter());
-          });
-        } else {
-          handleLocationError(false, map.getCenter());
-        }
-
       });
     }
     initMap();
@@ -240,10 +229,14 @@ $('#submit').on('click', function (event) {
           }
         })
         const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
+          zoom: 12,
           zoomControl: true,
           zoomControlOptions: {
             position: google.maps.ControlPosition.RIGHT_BOTTOM,
+          },
+          center: {
+            lat: _businessData[0].coordinates.latitude,
+            lng: _businessData[0].coordinates.longitude
           },
           tilt: 45,
           disableDefaultUI: true
@@ -260,24 +253,8 @@ $('#submit').on('click', function (event) {
               text: `${i+1}`,
               fontSize: '16px',
             }
-
           })
         }
-
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function (position) {
-            let pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            map.setCenter(pos);
-          }, function () {
-            handleLocationError(true, map.getCenter());
-          });
-        } else {
-          handleLocationError(false, map.getCenter());
-        }
-
       });
     }
     initMap();
